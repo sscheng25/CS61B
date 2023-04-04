@@ -6,5 +6,5 @@
 **[Week01](https://github.com/sscheng25/CS61B/tree/master/week01)**
  - [ ] Lecture 01/02
  - [ ] Lab 0 Setting Up Your Computer 
- - [ ] HW 0
+ - [x] HW 0
  - [ ] Project 0
