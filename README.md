@@ -1,6 +1,7 @@
 # CS61B: Data Structures
  - [Course Webpage](https://fa22.datastructur.es/)
  - [Git Guide](https://fa22.datastructur.es/materials/guides/git/)
+ - [Pro Git](https://git-scm.com/book/en/v2)
 
 ## Timeline
 **[Week01](https://github.com/sscheng25/CS61B/tree/master/week01)**
