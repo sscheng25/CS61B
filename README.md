@@ -2,6 +2,7 @@
  - [Course Webpage](https://fa22.datastructur.es/)
  - [Git Guide](https://fa22.datastructur.es/materials/guides/git/)
  - [Pro Git](https://git-scm.com/book/en/v2)
+ - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
  - [Proj & HW Skeletons](https://github.com/Berkeley-CS61B/skeleton-fa22)
 
 ## Timeline
