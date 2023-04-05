@@ -8,6 +8,6 @@
 ## Timeline
 **[Week01](https://github.com/sscheng25/CS61B/tree/master/week01)**
  - [ ] Lecture 01/02
- - [ ] Lab 01 Setting Up Your Computer 
+ - [x] Lab 01 Setting Up Your Computer 
  - [x] HW 0
  - [ ] Project 0
