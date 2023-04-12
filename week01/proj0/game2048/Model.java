@@ -155,6 +155,13 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for (int r=0; r<b.size(); r+=1) {
+            for (int c=0; c<b.size(); c+=1) {
+                if (b.tile(c, r) != null && b.tile(c, r).value() == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -164,9 +171,39 @@ public class Model extends Observable {
      * 1. There is at least one empty space on the board.
      * 2. There are two adjacent tiles with the same value.
      */
+    public static boolean canMove(Tile t, int col, int row, int size, Board b) {
+        if (col-1 >=0 && t.value() == b.tile(col-1, row).value()) {
+            return true;
+        } else if (col+1 < size && t.value() == b.tile(col+1, row).value()) {
+            return true;
+        } else if (row-1 >=0 && t.value() == b.tile(col, row-1).value()) {
+            return true;
+        } else if (row+1 < size && t.value() == b.tile(col, row+1).value()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validMove(Board b) {
+        for (int r=0; r<b.size(); r+=1) {
+            for (int c=0; c<b.size(); c+=1) {
+                if (b.tile(c, r) != null && canMove(b.tile(c, r), c, r, b.size(), b)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
-        return false;
+        if (emptySpaceExists(b)) {
+            return true;
+        } else if (validMove(b)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** Returns the model as a string, used for debugging. */
