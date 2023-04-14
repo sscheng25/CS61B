@@ -117,8 +117,51 @@ public class Model extends Observable {
      */
     public void tilt(Side side) {
         // TODO: Fill in this function.
-
+        for (int c=0; c< _board.size(); c+=1) {
+            for (int r=_board.size()-2; r>=0; r-=1) {
+                Tile t = _board.tile(c, r);
+                if (t != null) {
+                    if (canMoveUp(c, r, _board)) {
+                        int maxMove = getMaxMove(c, r, _board);
+                        if (_board.tile(c, maxMove) != null) {
+                            _board.move(c, maxMove, t);
+                            _score += _board.tile(c, maxMove).value();
+                        } else {
+                            _board.move(c, getMaxMove(c, r, _board), t);
+                        }
+                    }
+                }
+            }
+        }
+        // _score +=0;
         checkGameOver();
+    }
+
+    public static boolean canMoveUp(int col, int row, Board b) {
+        if (row+1>=b.size()) {
+            return false;
+        }
+        if (b.tile(col, row+1) == null) {
+            return true;
+        } else if (b.tile(col, row+1).value() == b.tile(col, row).value()) {
+            return true;
+        } else {
+            return false;
+        }
+        // return false;
+    }
+
+    public static int getMaxMove(int col, int row, Board b) {
+        for (int i=row+1; i<b.size(); i+=1) {
+            if (b.tile(col, i) == null) {
+                // continue;
+            } else if (b.tile(col, i).value() == b.tile(col, row).value()) {
+                return i;
+            } else {
+                return i-1;
+            }
+        }
+        return b.size()-1;
     }
 
     /** Checks if the game is over and sets the gameOver variable
