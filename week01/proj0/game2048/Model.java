@@ -1,5 +1,6 @@
 package game2048;
 
+import java.util.Arrays;
 import java.util.Formatter;
 import java.util.Observable;
 
@@ -117,38 +118,43 @@ public class Model extends Observable {
      */
     public void tilt(Side side) {
         // TODO: Fill in this function.
-        // _board.setViewingPerspective(Side.WEST);
-        boolean merged;
+        _board.setViewingPerspective(side);
+
+        boolean[] mergedArray;
+        // boolean[] mergedArray;
         for (int c=0; c< _board.size(); c+=1) {
-            merged = false;
+            mergedArray = new boolean[_board.size()];
+            Arrays.fill(mergedArray, false);
+
             for (int r=_board.size()-2; r>=0; r-=1) {
                 Tile t = _board.tile(c, r);
                 if (t != null) {
-                    if (canMoveUp(c, r, _board, merged)) {
-                        int maxMove = getMaxMove(c, r, _board, merged);
+                    if (canMoveUp(c, r, _board, mergedArray)) {
+                        int maxMove = getMaxMove(c, r, _board, mergedArray);
                         if (_board.tile(c, maxMove) != null) {
                             _board.move(c, maxMove, t);
                             _score += _board.tile(c, maxMove).value();
-                            merged = true;
+                            mergedArray[maxMove] = true;
+
                         } else {
-                            _board.move(c, getMaxMove(c, r, _board, merged), t);
+                            _board.move(c, getMaxMove(c, r, _board, mergedArray), t);
                         }
                     }
                 }
             }
         }
-        // _score +=0;
-        // _board.setViewingPerspective(Side.NORTH);
+
+        _board.setViewingPerspective(Side.NORTH);
         checkGameOver();
     }
 
-    public static boolean canMoveUp(int col, int row, Board b, boolean merged) {
+    public static boolean canMoveUp(int col, int row, Board b, boolean[] mArray) {
         if (row+1>=b.size()) {
             return false;
         }
         if (b.tile(col, row+1) == null) {
             return true;
-        } else if (b.tile(col, row+1).value() == b.tile(col, row).value() && !merged) {
+        } else if (b.tile(col, row+1).value() == b.tile(col, row).value() && !mArray[row+1]) {
             return true;
         } else {
             return false;
@@ -156,11 +162,11 @@ public class Model extends Observable {
         // return false;
     }
 
-    public static int getMaxMove(int col, int row, Board b, boolean merged) {
+    public static int getMaxMove(int col, int row, Board b, boolean[] mArray) {
         for (int i=row+1; i<b.size(); i+=1) {
             if (b.tile(col, i) == null) {
                 // continue;
-            } else if (b.tile(col, i).value() == b.tile(col, row).value() && !merged) {
+            } else if (b.tile(col, i).value() == b.tile(col, row).value() && !mArray[i]) {
                 return i;
             } else {
                 return i-1;
