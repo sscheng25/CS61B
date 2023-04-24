@@ -14,5 +14,5 @@
 
  **[Week02](https://github.com/sscheng25/CS61B/tree/master/week02)**
  - [ ] Lecture 03/04/05
- - [ ] Lab 02: JUnit Tests and Debugging
- - [ ] HW 1
+ - [x] Lab 02: JUnit Tests and Debugging
+
