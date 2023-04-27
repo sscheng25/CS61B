@@ -13,6 +13,10 @@
  - [x] Project 0
 
  **[Week02](https://github.com/sscheng25/CS61B/tree/master/week02)**
- - [ ] Lecture 03/04/05
+ - [x] Lecture 03/04/05
  - [x] Lab 02: JUnit Tests and Debugging
 
+ **[Week03](https://github.com/sscheng25/CS61B/tree/master/week03)**
+ - [ ] Lecture 06/07
+ - [ ] Lab 03: Timing Tests and Randomized Comparison Tests
+ - [ ] Project 1
