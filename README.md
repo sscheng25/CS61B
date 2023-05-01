@@ -17,6 +17,6 @@
  - [x] Lab 02: JUnit Tests and Debugging
 
  **[Week03](https://github.com/sscheng25/CS61B/tree/master/week03)**
- - [ ] Lecture 06/07
+ - [x] Lecture 06/07
  - [ ] Lab 03: Timing Tests and Randomized Comparison Tests
  - [ ] Project 1

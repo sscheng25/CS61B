@@ -21,7 +21,32 @@ public class TimeAList {
         timeAListConstruction();
     }
 
+    public static void runMultiTime(int n) {
+        AList<Integer> a = new AList<Integer>();
+        for (int i=0; i<n; i+=1) {
+            a.addLast(1);
+        }
+    }
+
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+
+        AList<Integer> a = new AList<Integer>();
+        AList<Double> t = new AList<Double>();
+        AList<Integer> o = new AList<Integer>();
+
+        for (int i=1000; i<=128000; i*=2) {
+            a.addLast(i);
+            Stopwatch sw = new Stopwatch();
+            runMultiTime(i);
+            double timeInSeconds = sw.elapsedTime();
+
+            t.addLast(timeInSeconds);
+            o.addLast(i);
+        }
+
+        System.out.println("Timing table for addLast");
+        printTimingTable(a, t, o);
+
     }
 }
