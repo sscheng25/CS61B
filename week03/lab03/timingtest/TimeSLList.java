@@ -50,7 +50,7 @@ public class TimeSLList {
             t.addLast(timeInSeconds);
             o.addLast(10000);
         }
-        System.out.println("Timing table for addLast");
+        System.out.println("Timing table for getsLast");
         printTimingTable(a, t, o);
 
     }
