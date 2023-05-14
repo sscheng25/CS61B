@@ -31,7 +31,7 @@ public class LinkedListDeque<T> {
 
     /* Construct empty LinkedListDeque */
     public LinkedListDeque() {
-        sentinel.next = null;
+        sentinel.next = last;
         last.prev = sentinel;
         size = 0;
     }
@@ -42,17 +42,30 @@ public class LinkedListDeque<T> {
 
         if (sentinel.next.next == null) {
             sentinel.next.next = last;
+
+        }
+
+        sentinel.next.next.prev = sentinel.next;
+
+        if (last.prev.prev == null) {
             last.prev = sentinel.next;
         }
+
+
         size +=1;
     }
 
     public void addLast(T item) {
-        last.prev = new Node(item, last.prev, null);
-        last.prev.next = last;
+        last.prev = new Node(item, last.prev, last);
+        // last.prev.next = last;
 
         if (last.prev.prev == null) {
             last.prev.prev = sentinel;
+        }
+
+        last.prev.prev.next = last.prev;
+
+        if (sentinel.next.next == null) {
             sentinel.next = last.prev;
         }
         size +=1;
@@ -107,7 +120,7 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if (index == 1) {
+        if (index == 0) {
             return (T) sentinel.next.giveT();
         } else {
              return getRecursive(index - 1);
@@ -115,6 +128,20 @@ public class LinkedListDeque<T> {
     }
 
     public boolean equals(Object o) {
+        if (o instanceof LinkedListDeque == false) {
+            return false;
+        }
+        LinkedListDeque test = (LinkedListDeque) o;
+
+        if (this.size != test.size) {
+            return false;
+        }
+
+        for (int i = 0; i < size; i+=1) {
+            if (this.get(i) != test.get(i)) {
+                return false;
+            }
+        }
         return true;
     }
 

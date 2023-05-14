@@ -121,4 +121,19 @@ public class LinkedListDequeTest {
 
 
     }
+
+    @Test
+    /* Add large number of elements to deque; check if order is correct. */
+    public void smallLLDequeTest() {
+
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        lld1.addFirst(100);
+        lld1.addFirst(200);
+        lld1.addFirst(300);
+        System.out.println(lld1.get(0));
+        System.out.println(lld1.getRecursive(1));
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+    }
 }
