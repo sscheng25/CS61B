@@ -4,6 +4,7 @@
  - [Pro Git](https://git-scm.com/book/en/v2)
  - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
  - [Proj & HW Skeletons](https://github.com/Berkeley-CS61B/skeleton-fa22)
+ - [Lecture Codes](https://github.com/Berkeley-CS61B/lectureCode-fa22/tree/main)
 
 ## Timeline
 **[Week01](https://github.com/sscheng25/CS61B/tree/master/week01)**
