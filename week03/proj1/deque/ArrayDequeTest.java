@@ -38,4 +38,26 @@ public class ArrayDequeTest {
         lld1.addLast(1000);
         System.out.println(lld1.get(4));
     }
+
+    @Test
+    public void removeLastTest() {
+
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        for (int i=0; i<20;i+=1) {
+            lld1.addLast(i);
+        }
+
+        for (int i=0; i<16;i+=1) {
+            lld1.removeLast();
+        }
+
+        for (int i=0; i<20;i+=1) {
+            lld1.addLast(i);
+        }
+
+        for (int i=0; i<22;i+=1) {
+            lld1.removeLast();
+        }
+        System.out.println(lld1.get(4));
+    }
 }

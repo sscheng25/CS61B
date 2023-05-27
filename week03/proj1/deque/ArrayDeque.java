@@ -34,7 +34,7 @@ public class ArrayDeque<T> {
                 for (int i=0; i<size; i+=1) {
                     temp[i] = a[i];
                 }
-
+                nextFirst = s-1;
             } else {
                 for (int i = s-size+nextFirst; i<s; i+=1) {
                     temp[i] = a[i+size-s];
@@ -51,13 +51,15 @@ public class ArrayDeque<T> {
                     temp[i] = a[nextFirst+1+i];
                 }
             } else {
-                for (int i=0; i<size-nextFirst+1; i+=1) {
+                for (int i=0; i<size-nextFirst-1; i+=1) {
                     temp[i] = a[nextFirst+1+i];
                 }
-                for(int m=size-nextFirst+1; m<size-nextFirst+1+nextLast; m+=1) {
-                    temp[m] = a[m-(size-nextFirst+1)];
+                for(int m=size-nextFirst-1; m<size-nextFirst-1+nextLast; m+=1) {
+                    temp[m] = a[m-(size-nextFirst-1)];
                 }
             }
+            nextFirst = s-1;
+            nextLast = actSize-1;
         }
         a = temp;
     }
@@ -161,6 +163,12 @@ public class ArrayDeque<T> {
 
     public T get(int index) {
         if (actSize == 0 || index > size - 1) {
+            return null;
+        }
+        if (nextFirst<nextLast && (index<=nextFirst || index>=nextLast)) {
+            return null;
+        }
+        if (nextFirst>nextLast && (index>=nextLast && index<=nextFirst)) {
             return null;
         }
         return a[index];
