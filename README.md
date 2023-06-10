@@ -22,6 +22,9 @@
  - [x] Lab 03: Timing Tests and Randomized Comparison Tests
  - [ ] Project 1
 
-  **[Week04](https://github.com/sscheng25/CS61B/tree/master/week04)**
- - [ ] Lecture 08/09/10
- - [ ] Lab 03: Git and Debugging
+**[Week04](https://github.com/sscheng25/CS61B/tree/master/week04)**
+ - [x] Lecture 08/09/10
+ - [x] Lab 03: Git and Debugging
+
+**[Week05](https://github.com/sscheng25/CS61B/tree/master/week05)**
+ - [ ] Lecture 11/12/13
