@@ -1,6 +1,8 @@
 package deque;
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+public class ArrayDeque<T> implements Deque<T> {
     private int size = 8;
     private int actSize;
     private T a[];
@@ -22,6 +24,7 @@ public class ArrayDeque<T> {
         actSize = 0;
     }
 
+    @Override
     public int size() {
         return actSize;
     }
@@ -64,10 +67,12 @@ public class ArrayDeque<T> {
         a = temp;
     }
 
+    @Override
     public boolean isEmpty() {
         return actSize == 0;
     }
 
+    @Override
     public void addFirst(T item) {
         if (actSize + 2 <= size) {
             actSize += 1;
@@ -86,6 +91,7 @@ public class ArrayDeque<T> {
 
     }
 
+    @Override
     public void addLast(T item) {
         if (actSize + 2 <= size) {
             actSize += 1;
@@ -104,6 +110,7 @@ public class ArrayDeque<T> {
         }
     }
 
+    @Override
     public T removeFirst() {
         T temp;
         if (nextFirst == size - 1) {
@@ -125,6 +132,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
+    @Override
     public T removeLast() {
         T temp;
         if (nextLast == 0) {
@@ -146,6 +154,7 @@ public class ArrayDeque<T> {
         return temp;
     }
 
+    @Override
     public void printDeque(){
         if (nextFirst < nextLast) {
             for (int i=nextFirst+1; i< nextLast-1; i+=1) {
@@ -161,6 +170,7 @@ public class ArrayDeque<T> {
         }
     }
 
+    @Override
     public T get(int index) {
         if (actSize == 0 || index > size - 1) {
             return null;
@@ -174,6 +184,7 @@ public class ArrayDeque<T> {
         return a[index];
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o instanceof ArrayDeque == false) {
             return false;
@@ -191,6 +202,33 @@ public class ArrayDeque<T> {
         }
 
         return true;
+    }
+
+    private class arrayDequeIterator implements Iterator<T> {
+        private int wizPos;
+        public arrayDequeIterator() { wizPos = 0; }
+
+        public boolean hasNext() {
+            return wizPos < actSize;
+        }
+
+        public T next() {
+            T returnItem;
+
+            if (nextFirst + wizPos + 1 < size) {
+                returnItem = a[nextFirst + wizPos + 1];
+            } else {
+                returnItem = a[nextFirst + wizPos + 1 - size];
+            }
+            wizPos += 1;
+            return returnItem;
+        }
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new arrayDequeIterator();
     }
 
     public static void main(String[] args) {

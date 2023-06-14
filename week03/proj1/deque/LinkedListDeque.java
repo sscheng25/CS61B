@@ -1,6 +1,8 @@
 package deque;
 
-public class LinkedListDeque<T> {
+import java.util.Iterator;
+
+public class LinkedListDeque<T> implements Deque<T> {
     /* Sentinel Node video: List 2, Video 6 */
     private Node<Integer> sentinel = new Node<Integer>(11, null, null);
     private Node<Integer> last = new Node<Integer>(22, null, null);
@@ -36,6 +38,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
+    @Override
     public void addFirst(T item) {
         sentinel.next = new Node(item, null, sentinel.next);
         sentinel.next.prev = sentinel;
@@ -55,6 +58,7 @@ public class LinkedListDeque<T> {
         size +=1;
     }
 
+    @Override
     public void addLast(T item) {
         last.prev = new Node(item, last.prev, last);
         // last.prev.next = last;
@@ -71,6 +75,7 @@ public class LinkedListDeque<T> {
         size +=1;
     }
 
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -82,6 +87,7 @@ public class LinkedListDeque<T> {
         return temp;
     }
 
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -93,14 +99,17 @@ public class LinkedListDeque<T> {
         return temp;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         Node t = sentinel.next;
         while (t != last) {
@@ -109,6 +118,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public T get(int index) {
         int i = 0;
         Node t = sentinel.next;
@@ -127,6 +137,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o instanceof LinkedListDeque == false) {
             return false;
@@ -143,6 +154,28 @@ public class LinkedListDeque<T> {
             }
         }
         return true;
+    }
+
+    private class listDequeIterator implements Iterator<T> {
+        private Node wizPos;
+        public listDequeIterator() {
+            wizPos = sentinel.next;
+        }
+
+        public boolean hasNext() {
+            return wizPos.next != null;
+        }
+
+        public T next() {
+            T returnItem = (T) wizPos.giveT();
+            wizPos = wizPos.next;
+            return returnItem;
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new listDequeIterator();
     }
 
     public static void main(String[] args) {
