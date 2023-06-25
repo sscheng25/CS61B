@@ -231,6 +231,10 @@ public class ArrayDeque<T> implements Deque<T> {
         return new arrayDequeIterator();
     }
 
+    public int getNextFirst() {
+        return nextFirst;
+    }
+
     public static void main(String[] args) {
 
     }
