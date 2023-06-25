@@ -20,7 +20,7 @@
  **[Week03](https://github.com/sscheng25/CS61B/tree/master/week03)**
  - [x] Lecture 06/07
  - [x] Lab 03: Timing Tests and Randomized Comparison Tests
- - [ ] Project 1
+ - [x] Project 1
 
 **[Week04](https://github.com/sscheng25/CS61B/tree/master/week04)**
  - [x] Lecture 08/09/10
